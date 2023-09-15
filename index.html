@@ -4,34 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Clock</title>
+    <title>Dice-Project</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container1">
-        <div class="container2">
-            <div class="clock">
-                <span id="hrs">0 0</span>
-                <span>:</span>
-                <span id="min">0 0</span>
-                <span>:</span>
-                <span id="sec">0 0</span>
-            </div>
-        </div>
+    <h1 style="margin-bottom: 30px;">Roll The Dice </h1>
+
+    <h1 id="result">Result :</h1>
+    <div class="dice1">
+        <h1 class="player1">Player 1</h1>
+        <img src="./images/dice1.png" alt="dice-img" id="diceOne">
+        <h1 class="vs">VS</h1>        
     </div>
 
+    <div class="dice2">
+        <h1 class="player2">Player 2</h1>
+        <img alt="dice-img" id="diceTwo" src="./images/dice1.png">
+        
+    </div>
     <script>
-        let hrs = document.getElementById("hrs")
-        let min = document.getElementById("min")
-        let sec = document.getElementById("sec")
 
-        setInterval(() => {
-            {
-            hrs.innerHTML = (new Date().getHours()<10 ? "0" : "") + new Date().getHours()
-            min.innerHTML = (new Date().getMinutes()<10 ? "0" : "")  + new Date().getMinutes()
-            sec.innerHTML = (new Date().getSeconds()<10 ? "0" : "")  + new Date().getSeconds()
+        let firstRandom = Math.floor(Math.random() * 6)+1
+        let secRandom = Math.floor(Math.random() * 6)+1
+
+        let diceOne = "./images/dice" + firstRandom + ".png"
+        let diceTwo = "./images/dice" + secRandom + ".png"
+
+        
+
+        
+
+        function roll() {
+            let x = document.getElementById('diceOne').setAttribute('src',diceOne)
+            // let z = document.getElementById('result').innerText = firstRandom < secRandom ? "Win Player2" : "Win Player1"
+            // document.getElementById('result').innerText = firstRandom == secRandom ? "Draw" : z
         }
-        })
+        function roll1() {
+            let y = document.getElementById('diceTwo').setAttribute('src',diceTwo)
+            let z = document.getElementById('result').innerText = firstRandom < secRandom ? "Win Player2" : "Win Player1"
+            document.getElementById('result').innerText = firstRandom == secRandom ? "Draw" : z
+        }
+
+        document.getElementById('diceOne').addEventListener("click",roll)
+        document.getElementById('diceTwo').addEventListener("click",roll1)
+
+        // document.getElementById('diceOne').addEventListener("click",function roll() 
+        // {
+        //     let x = document.getElementById('diceOne').setAttribute('src',diceOne)
+        //     let y = document.getElementById('diceTwo').setAttribute('src',diceTwo)
+        // })
+
+        // document.getElementById('diceTwo').addEventListener("click",function roll() 
+        // {
+        //     let x = document.getElementById('diceOne').setAttribute('src',diceOne)
+        //     let y = document.getElementById('diceTwo').setAttribute('src',diceTwo)
+        // })
+
     </script>
 </body>
 </html>
